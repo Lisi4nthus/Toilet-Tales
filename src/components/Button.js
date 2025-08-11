@@ -14,15 +14,19 @@ export default function Button({
   const getVariantStyles = () => {
     switch (variant) {
       case "primary":
-        return "bg-blue-600 hover:bg-blue-700 text-white";
+        return "bg-teal-500 hover:bg-teal-600 text-white";
       case "secondary":
         return "bg-gray-600 hover:bg-gray-700 text-white";
       case "outline":
         return "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white";
+      case "success":
+        return "bg-blue-600 hover:bg-blue-700 text-white";
       case "danger":
         return "bg-red-600 hover:bg-red-700 text-white";
+      case "warning":
+        return "bg-orange-500 hover:bg-orange-600 text-white";
       default:
-        return "bg-blue-600 hover:bg-blue-700 text-white";
+        return "bg-black-600 hover:bg-blue-700 text-white";
     }
   };
 

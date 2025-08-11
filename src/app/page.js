@@ -18,7 +18,7 @@ export default function HomePage() {
           Next.js와 React로 만든 멋진 웹사이트입니다. 공통 컴포넌트들을 활용해서
           일관된 디자인을 유지할 수 있어요.
         </p>
-        <Button variant="primary" size="large" onClick={handleClick}>
+        <Button variant="success" size="large" onClick={handleClick}>
           시작하기
         </Button>
       </section>
@@ -33,7 +33,7 @@ export default function HomePage() {
               한 번 만든 컴포넌트를 여러 곳에서 재사용할 수 있어서 개발 속도가
               빨라집니다.
             </p>
-            <Button variant="outline" size="small">
+            <Button variant="primary" size="small">
               자세히 보기
             </Button>
           </Card>
@@ -53,7 +53,7 @@ export default function HomePage() {
               컴포넌트를 수정하면 해당 컴포넌트를 사용하는 모든 곳에 자동으로
               적용됩니다.
             </p>
-            <Button variant="primary" size="small">
+            <Button variant="warning" size="small" disabled>
               시작하기
             </Button>
           </Card>
