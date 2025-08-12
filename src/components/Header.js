@@ -3,9 +3,18 @@
 
 import Link from "next/link";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const { user, signOut } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await signOut();
+    router.push("/auth");
+  };
   return (
     <header className="bg-blue-600 text-white shadow-md">
       <div className="container mx-auto px-4">
@@ -38,12 +47,37 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="/auth"
+                  href="/dashboard"
                   className="hover:text-blue-200 transition-colors"
                 >
-                  로그인
+                  대시보드
                 </Link>
               </li>
+              {!user && (
+                <li>
+                  <Link
+                    href="/auth"
+                    className="hover:text-blue-200 transition-colors"
+                  >
+                    로그인
+                  </Link>
+                </li>
+              )}
+              {user && (
+                <>
+                  <li className="hidden md:block text-sm text-blue-100">
+                    {user.displayName || user.email}
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-sm"
+                    >
+                      로그아웃
+                    </button>
+                  </li>
+                </>
+              )}
               <li>
                 <button
                   onClick={toggleTheme}

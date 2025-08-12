@@ -16,6 +16,13 @@ export default function Map({
   const markersRef = useRef([]);
   const [scriptReady, setScriptReady] = useState(false);
 
+  // 이미 스크립트가 로드된 경우 대비
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.naver?.maps) {
+      setScriptReady(true);
+    }
+  }, []);
+
   // 초기 위치를 사용자 현재 위치로 보정
   useEffect(() => {
     if (!navigator?.geolocation) return;
