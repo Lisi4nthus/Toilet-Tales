@@ -2,8 +2,10 @@
 "use client";
 
 import Link from "next/link";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Header() {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className="bg-blue-600 text-white shadow-md">
       <div className="container mx-auto px-4">
@@ -11,13 +13,13 @@ export default function Header() {
           {/* 로고/사이트명 */}
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold hover:text-blue-200">
-              내 웹사이트
+              Toilet Tales
             </Link>
           </div>
 
           {/* 네비게이션 메뉴 */}
           <nav>
-            <ul className="flex space-x-6">
+            <ul className="flex items-center space-x-6">
               <li>
                 <Link
                   href="/"
@@ -28,19 +30,28 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/toilets"
                   className="hover:text-blue-200 transition-colors"
                 >
-                  소개
+                  화장실
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/auth"
                   className="hover:text-blue-200 transition-colors"
                 >
-                  연락처
+                  로그인
                 </Link>
+              </li>
+              <li>
+                <button
+                  onClick={toggleTheme}
+                  className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-sm"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? "라이트" : "다크"}
+                </button>
               </li>
             </ul>
           </nav>

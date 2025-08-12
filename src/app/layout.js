@@ -1,5 +1,6 @@
 // src/app/layout.js
 import Layout from "../components/Layout";
+import Providers from "./providers";
 import "./globals.css";
 
 export const metadata = {
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body>
-        <Layout>{children}</Layout>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );
